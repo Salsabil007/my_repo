@@ -1,0 +1,168 @@
+#!/bin/bash
+x="CSE 14"
+echo $x
+text=`expr 1 + 2`
+echo $text
+r=5
+r=`expr $r + 1`
+echo $r
+let var=3
+let var=$var+1
+echo $var
+p=`expr 1 % 2`
+echo $p
+echo "Enter numbers:"
+read
+echo $1
+
+////////// even odd
+echo "Enter a number:"
+read x
+if [ $(expr $x % 2) -eq 0 ]; then echo "even"
+else
+	echo "odd"
+fi
+
+
+//////////////// case
+
+echo "Enter a number:"
+read x
+case $x in
+	1) echo "got 1";; 
+	2) echo "got 2";;
+	*) echo "got other";;
+esac
+
+
+////////////////////////////// for loop type1
+
+echo "number of arguments $#"
+a=1
+for i in $*
+	do
+	echo "The `expr $a` no argument is `expr $i`"
+
+	a=`expr $a + 1`
+done
+
+
+///////////////////////////// for loop type2
+
+echo "number of arguments $#"
+a=1
+for i in $*
+	do
+	echo "The  $a no argument is $i"
+
+	a=`expr $a + 1`
+done
+
+///////////////////// for loop type3
+
+echo "number of arguments $#"
+a=1
+for ((i=0;i<=10;i++))
+	do
+	echo $i
+	
+done
+
+///////////////////// for loop type4
+
+for i in `ls`
+	do
+	echo $i
+done
+
+/////////////////// while loop
+
+password="abc"
+read pass
+while [ $pass != $password ]
+	do
+	echo "wrong password!!!"
+	read pass
+done
+echo "right password!!!"
+
+///////////////////// function type1
+
+foo(){
+	echo "good momrning"
+}
+echo "good boy"
+foo
+
+/////////////////// function type2
+
+showarg()
+{
+a=1
+for i in $*
+do
+echo "The $a No arg is $i"
+a=`expr $a + 1`
+done
+}
+
+echo "Listing start"
+showarg $*
+echo "Total:$#"
+echo "Listing End"
+
+//////////////// function returning value
+
+foo()
+{
+	var="abc"
+}
+foo
+echo $var
+
+////////////////////////////////
+
+for i in $*; do
+ if [ -x $i ]
+	then echo "already executable" && ls -l script.sh
+else echo "not" && ls -l script.sh && chmod +x script.sh && ls -l script.sh
+fi
+done
+
+/////////////////////////////////
+
+
+for i in $*; do
+ if [[ -d $i ]]
+	then echo "directory"
+ elif [[ -f $i ]]
+	then echo "file"
+fi
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

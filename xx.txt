@@ -1,0 +1,26 @@
+
+if [ $# -lt 1 ]
+then
+  echo "Usage: " 
+  ls
+  exit 1
+
+else 
+  for i in $*
+	if [ -e $i ]
+	then
+		if [ -f $i ]
+		then
+        	  do
+        	  echo "$i is currently executable."
+        	  ls -l $i
+        	  echo "$i's executable permission is now changing."
+        	  chmod -x $i
+        	  ls -l $i
+        	  echo "$i is currently not executable."
+        	  done
+	       else echo "$i is not reguler"
+	       fi
+	else echo "$i doen not exists"
+	fi
+fi
